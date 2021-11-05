@@ -125,7 +125,7 @@ class BinaryNode<AnyType> {
 
     // this function is recursively checks the height of both
     // left and right branches. A binary tree is considered "balanced"
-    // as long as the branches are within +/- 1 of eachother.
+    // as long as the branches are within +/- 1 of another.
     public int isBalancedRec(BinaryNode<AnyType> t) {
         if (t == null)
             return 0;
@@ -139,8 +139,8 @@ class BinaryNode<AnyType> {
     }
 
     // This method was put in place with to check the depth of the tree
-    // This depth variable is then used in the isPerfectRec function so we
-    // can check, if each branch of the tree has the same depth/same leafs
+    // This depth variable is then used in the isPerfectRec function, so we
+    // can check, if each branch of the tree has the same depth/same leaves
     public int findDepth(BinaryNode<AnyType> t) {
         int d = 0;
         while (t != null) {
@@ -150,16 +150,16 @@ class BinaryNode<AnyType> {
         return d;
     }
 
-    // This function is specifically to check the right and left branchs to verify that
+    // This function is specifically to check the right and left branches to verify that
     // they are perfect of not. In order for a binary tree to be perfect they must have
-    // the exactly the same left and right side depth and width. So it checks each level
+    // exactly the same left and right side depth and width. So it checks each level
     // and then if satisfied it will increment to the next until one or both sides returns null.
     public boolean isPerfectRec(BinaryNode<AnyType> t, int d, int level) {
         // Empty trees are perfect
         if (t == null) {
             return true;
         }
-        // if leaf node, then its depth must the same as depth of all other leaves
+        // if leaf node, then its depth must the same depth of all others leaves
         if (t.left == null && t.right == null)
             return (d == level + 1);
         // if internal node and one child is empty
@@ -167,7 +167,7 @@ class BinaryNode<AnyType> {
             return false;
         }
 
-        // left and right subrees must be perfect
+        // left and right subtrees must be perfect
         return isPerfectRec(t.left, d, level + 1) && isPerfectRec(t.right, d, level + 1);
     }
 
