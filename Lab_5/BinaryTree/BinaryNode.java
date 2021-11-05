@@ -110,18 +110,16 @@ class BinaryNode<AnyType> {
     public boolean isBalancedcalc(BinaryNode<AnyType> t) {
         if (t == null)
             return true;
-        if (isBalancedRec(t) == -1)
-            return false;
-        return true;
+        return isBalancedRec(t) != -1;
     }
 
     // this is the main balanced function which is called from the main
     // once calculating if the tree is balanced or not prints to the user
     // the result.
     public void isBalanced(BinaryNode<AnyType> t) {
-        if (isBalancedcalc(t) == true)
+        if (isBalancedcalc(t))
             System.out.println("Tree is balanced!");
-        if (isBalancedcalc(t) == false)
+        if (!isBalancedcalc(t))
             System.out.println("Tree is not balanced");
     }
 
@@ -178,10 +176,10 @@ class BinaryNode<AnyType> {
     // then prints out to the user if the tree is perfect or not.
     public void isPerfect(BinaryNode<AnyType> t) {
         int d = findDepth(t);
-        if (isPerfectRec(t, d, 0) == true) {
+        if (isPerfectRec(t, d, 0)) {
             System.out.println("Tree is perfect! :D");
         }
-        if (isPerfectRec(t, d, 0) == false) {
+        if (!isPerfectRec(t, d, 0)) {
             System.out.println("Tree is not perfect :(");
         }
 
@@ -193,7 +191,7 @@ class BinaryNode<AnyType> {
      * rooted at the current node.
      */
     public BinaryNode<AnyType> duplicate() {
-        BinaryNode<AnyType> root = new BinaryNode<AnyType>(item, null, null);
+        BinaryNode<AnyType> root = new BinaryNode<>(item, null, null);
 
         if (left != null) // If there's a left subtree
             root.left = left.duplicate(); // Duplicate; attach

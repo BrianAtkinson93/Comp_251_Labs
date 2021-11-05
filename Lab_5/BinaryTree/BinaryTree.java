@@ -23,7 +23,7 @@ public class BinaryTree<AnyType> {
     }
 
     public BinaryTree(AnyType rootItem) {
-        root = new BinaryNode<AnyType>(rootItem, null, null);
+        root = new BinaryNode<>(rootItem, null, null);
     }
 
     public void clear() {
@@ -95,7 +95,7 @@ public class BinaryTree<AnyType> {
         }
 
         // Allocate new node
-        root = new BinaryNode<AnyType>(rootItem, t1.root, t2.root);
+        root = new BinaryNode<>(rootItem, t1.root, t2.root);
 
         // Ensure that every node is in just one tree!
         if (this != t1)
@@ -112,13 +112,13 @@ public class BinaryTree<AnyType> {
     }
 
     private static void test1() {
-        BinaryTree<Integer> t4 = new BinaryTree<Integer>(4);
-        BinaryTree<Integer> t5 = new BinaryTree<Integer>(5);
-        BinaryTree<Integer> t6 = new BinaryTree<Integer>(6);
-        BinaryTree<Integer> t1 = new BinaryTree<Integer>();
-        BinaryTree<Integer> t2 = new BinaryTree<Integer>();
-        BinaryTree<Integer> t3 = new BinaryTree<Integer>();
-        BinaryTree<Integer> temp = new BinaryTree<Integer>();
+        BinaryTree<Integer> t4 = new BinaryTree<>(4);
+        BinaryTree<Integer> t5 = new BinaryTree<>(5);
+        BinaryTree<Integer> t6 = new BinaryTree<>(6);
+        BinaryTree<Integer> t1 = new BinaryTree<>();
+        BinaryTree<Integer> t2 = new BinaryTree<>();
+        BinaryTree<Integer> t3 = new BinaryTree<>();
+        BinaryTree<Integer> temp = new BinaryTree<>();
 
         t2.merge(2, t4, t5);
         t3.merge(3, t6, temp);
@@ -145,16 +145,15 @@ public class BinaryTree<AnyType> {
     // create a tree with 7 nodes and minimum possible height
     private static void test2() {
         // Your code
-        System.out.println("");
-        System.out.println("");
+
         System.out.println("Test 2");
-        BinaryTree<Integer> t4 = new BinaryTree<Integer>(4);
-        BinaryTree<Integer> t5 = new BinaryTree<Integer>(5);
-        BinaryTree<Integer> t6 = new BinaryTree<Integer>(6);
-        BinaryTree<Integer> t7 = new BinaryTree<Integer>(7);
-        BinaryTree<Integer> t1 = new BinaryTree<Integer>();
-        BinaryTree<Integer> t2 = new BinaryTree<Integer>();
-        BinaryTree<Integer> t3 = new BinaryTree<Integer>();
+        BinaryTree<Integer> t4 = new BinaryTree<>(4);
+        BinaryTree<Integer> t5 = new BinaryTree<>(5);
+        BinaryTree<Integer> t6 = new BinaryTree<>(6);
+        BinaryTree<Integer> t7 = new BinaryTree<>(7);
+        BinaryTree<Integer> t1 = new BinaryTree<>();
+        BinaryTree<Integer> t2 = new BinaryTree<>();
+        BinaryTree<Integer> t3 = new BinaryTree<>();
 
         t2.merge(2, t4, t5);
         t3.merge(3, t6, t7);
@@ -182,22 +181,21 @@ public class BinaryTree<AnyType> {
     private static void test3() {
         // Your code
 
-        System.out.println("");
-        System.out.println("");
+
         System.out.println("Test 3");
 
-        BinaryTree<Integer> t7 = new BinaryTree<Integer>(7);
-        BinaryTree<Integer> t6 = new BinaryTree<Integer>();
+        BinaryTree<Integer> t7 = new BinaryTree<>(7);
+        BinaryTree<Integer> t6 = new BinaryTree<>();
         t6.merge(6, new BinaryTree<>(), t7);
-        BinaryTree<Integer> t5 = new BinaryTree<Integer>();
+        BinaryTree<Integer> t5 = new BinaryTree<>();
         t5.merge(5, new BinaryTree<>(), t6);
-        BinaryTree<Integer> t4 = new BinaryTree<Integer>();
+        BinaryTree<Integer> t4 = new BinaryTree<>();
         t4.merge(4, new BinaryTree<>(), t5);
-        BinaryTree<Integer> t3 = new BinaryTree<Integer>();
+        BinaryTree<Integer> t3 = new BinaryTree<>();
         t3.merge(3, new BinaryTree<>(), t4);
-        BinaryTree<Integer> t2 = new BinaryTree<Integer>();
+        BinaryTree<Integer> t2 = new BinaryTree<>();
         t2.merge(2, new BinaryTree<>(), t3);
-        BinaryTree<Integer> t1 = new BinaryTree<Integer>();
+        BinaryTree<Integer> t1 = new BinaryTree<>();
         t1.merge(1, new BinaryTree<>(), t2);
 
         System.out.println("Test 3 generates a tree with 7 nodes (including root) with Maximal height");
