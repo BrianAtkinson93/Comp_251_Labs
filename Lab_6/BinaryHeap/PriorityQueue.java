@@ -1,4 +1,4 @@
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * PriorityQueue class implemented via the binary heap.
@@ -134,28 +134,46 @@ public class PriorityQueue<AnyType extends Comparable<? super AnyType>> {
         AnyType[] newArray;
 
         newArray = (AnyType[]) new Comparable[array.length * 2];
-        for (int i = 0; i < array.length; i++)
-            newArray[i] = array[i];
+        System.arraycopy(array, 0, newArray, 0, array.length);
         array = newArray;
     }
 
-    public static void main(String[] args) {
-        PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
-        final int NUMS = 4000;
-        final int GAP = 37;
 
-        System.out.println("Checking... (no more output means success)");
-        int min = 1000000;
-        for (int i = GAP; i != 0; i = (i + GAP) % NUMS) {
-            if (min > i)
-                min = i;
-            queue.push(i);
-            if (queue.top() != min)
-                System.out.println("Push error! " + i + "   " + queue.top());
+    public static void main(String[] args) {
+        // Below we are initializing the PriorityQueue
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        // Here I create a list to add the remaining items from the queue in order
+        List<Integer> outputList = new ArrayList<>();
+
+
+        // Assigning the array of integers to finalArray[]
+        int[] finalArray = {5, 3, 9, 7, 2, 4, 6, 1, 8};
+        // Adding the integers to the PriorityQueue in order given
+        System.out.println("Below I am adding the items into an array in order received : ");
+        for (int j : finalArray) {
+            queue.push(j);
         }
 
-        for (int i = 1; i < NUMS; i++)
-            if (queue.pop() != i)
-                System.out.println("Pop error!");
+
+        // Printing out the queue after adding the integers in order given
+        System.out.println(Arrays.toString(finalArray));
+
+
+        System.out.println("\nBelow I start to build the heap : ");
+        // Building the Heap ( This means putting the integers in order (smallest to largest) in this case
+        queue.buildHeap();
+        // Outputting the first three elements of the queue
+        System.out.println("First pop() : " + queue.pop() + "\nSecond pop() : " + queue.pop() + "\nThird pop() : " + queue.pop());
+
+
+        // While the queue is NOT empty, pop each element
+        while (!(queue.isEmpty())) {
+            outputList.add(queue.pop());
+        }
+
+
+        // Outputting the remainder of the queue as a list
+        System.out.println("\nThis is what is left of the queue : " + outputList);
+
     }
 }
