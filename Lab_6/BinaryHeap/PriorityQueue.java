@@ -138,42 +138,41 @@ public class PriorityQueue<AnyType extends Comparable<? super AnyType>> {
         array = newArray;
     }
 
+    private void printStatement() {
+        for (int i = 0; i < currentSize; i++) {
+            System.out.print(array[i + 1] + " ");
+        }
+    }
 
     public static void main(String[] args) {
         // Below we are initializing the PriorityQueue
         PriorityQueue<Integer> queue = new PriorityQueue<>();
-        // Here I create a list to add the remaining items from the queue in order
-        List<Integer> outputList = new ArrayList<>();
-
 
         // Assigning the array of integers to finalArray[]
         int[] finalArray = {5, 3, 9, 7, 2, 4, 6, 1, 8};
+
         // Adding the integers to the PriorityQueue in order given
         System.out.println("Below I am adding the items into an array in order received : ");
+
         for (int j : finalArray) {
             queue.push(j);
         }
 
-
         // Printing out the queue after adding the integers in order given
+
         System.out.println(Arrays.toString(finalArray));
-
-
         System.out.println("\nBelow I start to build the heap : ");
         // Building the Heap ( This means putting the integers in order (smallest to largest) in this case
         queue.buildHeap();
+
+        queue.printStatement();
+
         // Outputting the first three elements of the queue
-        System.out.println("First pop() : " + queue.pop() + "\nSecond pop() : " + queue.pop() + "\nThird pop() : " + queue.pop());
-
-
-        // While the queue is NOT empty, pop each element
-        while (!(queue.isEmpty())) {
-            outputList.add(queue.pop());
-        }
-
+        System.out.println("\n\nFirst pop() : " + queue.pop() + "\nSecond pop() : " + queue.pop() + "\nThird pop() : " + queue.pop());
 
         // Outputting the remainder of the queue as a list
-        System.out.println("\nThis is what is left of the queue : " + outputList);
+        System.out.print("\nThis is what is left of the queue :  ");
+        queue.printStatement();
 
     }
 }
